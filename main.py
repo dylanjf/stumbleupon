@@ -5,9 +5,9 @@ from sklearn import linear_model, ensemble
 from sklearn import metrics
 from sklearn import cross_validation
 from sklearn.decomposition import TruncatedSVD
-from stumbleupon.src.su_code import ModelEnsemble
+from src.su_code import ModelEnsemble
 from sklearn.feature_extraction.text import TfidfVectorizer
-from stumbleupon.src.su_code.util import LemmaTokenizer, create_test_submission
+from src.su_code.util import LemmaTokenizer, create_test_submission
 
 
 def train_su_model(path_to_data=None):
@@ -88,7 +88,7 @@ def train_su_model(path_to_data=None):
         y=y, data=X_LSA, train=range(len(y)), predict=range(len(y), X_LSA.shape[0]), features=features, show_steps=False)
     
     urlid = np.array(pd.read_csv(path_to_data + "/test_text.csv"))[:, 0]
-    create_test_submission(urlid, '/home/dylanjf/PycharmProjects/kaggle/stumbleupon/submission_final.csv',
+    create_test_submission(urlid, path_to_data + '/submission_final.csv',
                            final_predictions)
     print "Submission complete!"
     
